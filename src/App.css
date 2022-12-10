@@ -8,15 +8,9 @@
 .header {
   height: 5rem;
   background: linear-gradient(to right, #672280, #a626d3);
+  /* background: hsl(229, 140, 55); */
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 3rem;
-  align-items: center;
-  color: #ffffff;
-}
 .nav-title-logo {
   display: flex;
   width: 16rem;

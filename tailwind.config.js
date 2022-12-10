@@ -2,8 +2,8 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./src/components/*.{js}",
-    "./src/pages/*.{js}",
+    "./src/components/*.{js,jsx}",
+    "./src/pages/*.{js,jsx}",
   ],
   theme: {
     screens: {
@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        brightOrange: "hsl(229,140,55)",
+        brightOrange: "rgb(229,140,55)",
         brightRed: "hsl(12, 88%, 59%)",
         brightRedLight: "hsl(12, 88%, 69%)",
         brightRedSupLight: "hsl(12, 88%, 89%)",
@@ -24,6 +24,8 @@ module.exports = {
         veryDarkBlue: "hsl(233, 12%, 13%)",
         veryPaleRed: "hsl(13, 100%, 96%)",
         veryLightGray: "hsl(0, 0%, 98%)",
+        fromGradient: "rgba(0, 0, 0, 0.65) 0%",
+        toGradient: "rgba(0, 0, 0, 0) 100%",
       },
     },
   },
