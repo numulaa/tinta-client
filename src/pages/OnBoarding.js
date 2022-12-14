@@ -1,6 +1,11 @@
+import { useState } from "react"
+import Navbar from "../components/Navbar"
+
 const OnBoarding = () => {
     return (
-        <div>OnBoarding</div>
+        <>
+            <Navbar/>
+        </>
     )
 }
 
