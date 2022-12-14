@@ -2,11 +2,14 @@ import React from "react";
 import "../styles/css/main.css";
 import "../App.css";
 
-export default function Navbar({ minimal, authToken, setShowModal, showModal, setIsSignUp }) {
+
+export default function Navbar({ minimal, setShowModal, showModal, setIsSignUp }) {
   const handleClick = () => {
     setShowModal(true);
     setIsSignUp(false);
   };
+
+  const authToken = false;
 
   return (
     <header className="h-20">
