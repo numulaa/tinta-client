@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function AuthModal({ isSignUp, setShowModal }) {
   const [authFormData, setAuthFormData] = useState({
     userName: "",
-    emai: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
