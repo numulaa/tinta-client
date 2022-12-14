@@ -93,7 +93,7 @@ const OnBoarding = () => {
                                 name="genre"
                                 value="fiction"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genre === "fiction"}
                             />
                             <label htmlFor="fictionGenre">Fiction</label>
                             
@@ -104,7 +104,7 @@ const OnBoarding = () => {
                                 name="genre"
                                 value="nonfiction"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genre === "nonfiction"}
                             />
                             <label htmlFor="nonFictionGenre">Non-fiction</label>
                             
@@ -114,7 +114,7 @@ const OnBoarding = () => {
                                 name="genre"
                                 value="more"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genre === "more"}
                             />
                             <label htmlFor="moreGenre">More</label>
                         </div>
@@ -126,7 +126,7 @@ const OnBoarding = () => {
                             type="checkbox"
                             name="showGenre"
                             onChange={handleChange}
-                            checked={false}
+                            checked={formData.showGenre}
                         />
                         <label htmlFor="showGenre" className="mt-1 font-bold">Show Genre on my Profile</label>
                         </div>
@@ -139,7 +139,7 @@ const OnBoarding = () => {
                                 name="genreInterest"
                                 value="fiction"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genreInterest === "fiction"}
                             />
                             <label htmlFor="fictionGenreInterest">Fiction</label>
 
@@ -149,7 +149,7 @@ const OnBoarding = () => {
                                 name="genreInterest"
                                 value="nonfiction"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genreInterest === "nonfiction"}
                             />
                             <label htmlFor="fictionGenreInterest">Non-fiction</label>
                             
@@ -159,7 +159,7 @@ const OnBoarding = () => {
                                 name="genreInterest"
                                 value="every genre"
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.genreInterest === "every genre"}
                             />
                             <label htmlFor="everyGenreinterest">Every Genre</label>
 
