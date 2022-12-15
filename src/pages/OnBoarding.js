@@ -57,11 +57,11 @@ const OnBoarding = () => {
                 <h2 className="text-3xl mt-7 text-center font-extrabold">Create Account</h2>
 
                 <form onSubmit={handleSubmit} className="flex flex-col">
-                    <div className="flex gap-3 items-center lg:flex-row min-[320px]:flex-col">
-                    <section className="flex flex-col p-7 mt-3 basis-1/2">
+                    <div className="flex gap-7 lg:flex-row min-[280px]:flex-col">
+                    <section className="flex flex-col p-7 mt-3 basis-1/2 items-center sm:items-start text-center sm:text-left">
                         <label htmlFor="firstName" className="font-bold">First Name</label>
                         <input 
-                            className="rounded-md p-3 mt-2 border-solid border-2 border-gray w-full"
+                            className="rounded-md p-3 mt-2 border-solid border-2 border-gray w-fit sm:w-full"
                             type="text"
                             id="firstName"
                             name="firstName"
@@ -72,9 +72,9 @@ const OnBoarding = () => {
                         />
 
                         <label htmlFor="dob" className="mt-5 font-bold">Birthday</label>
-                        <div className="flex gap-2 items-center justify-center mt-2">
+                        <div className="flex gap-2 mt-2">
                             <input 
-                                className="rounded-md p-3 border-solid border-2 border-gray w-full"
+                                className="rounded-md p-3 border-solid border-2 border-gray w-fit sm:w-full"
                                 type="date"
                                 id="dob"
                                 name="dob"
@@ -84,10 +84,13 @@ const OnBoarding = () => {
                             />
                         </div>
 
-                        <label className="mt-5 font-bold">Genre</label>
-                        <div className="flex gap-1">
+                        <div className="mb-2">
+                        <label for="genre" className="block font-bold mb-2 mt-5">Genre</label>
+                        
+                        <div className="flex gap-2">
+                            <div className="radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
-                                className=""
+                                className="hidden"
                                 id="fictionGenre"
                                 type="radio"
                                 name="genre"
@@ -95,10 +98,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "fiction"}
                             />
-                            <label htmlFor="fictionGenre">Fiction</label>
-                            
+                            <label htmlFor="fictionGenre" className="font-semibold cursor-pointer">Fiction</label>
+                            </div>
+
+                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
-                                className=""
+                                className="hidden"
                                 id="nonFictionGenre"
                                 type="radio"
                                 name="genre"
@@ -106,9 +111,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "nonfiction"}
                             />
-                            <label htmlFor="nonFictionGenre">Non-fiction</label>
-                            
+                            <label htmlFor="nonFictionGenre" className="font-semibold cursor-pointer">Non-fiction</label>
+                            </div>
+
+                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
+                                className="hidden"
                                 id="moreGenre"
                                 type="radio"
                                 name="genre"
@@ -116,7 +124,11 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "more"}
                             />
-                            <label htmlFor="moreGenre">More</label>
+                            <label htmlFor="moreGenre" className="font-semibold cursor-pointer">More</label>
+                            </div>
+
+                        </div>
+                        
                         </div>
 
                         <div className="flex gap-1">
@@ -131,9 +143,11 @@ const OnBoarding = () => {
                         <label htmlFor="showGenre" className="mt-1 font-bold">Show Genre on my Profile</label>
                         </div>
 
-                        <label className="mt-5 font-bold">Show Me</label>
-                        <div className="flex gap-1">
+                        <label className="mt-7 font-bold">Show Me</label>
+                        <div className="flex gap-2">
+                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
+                                className="hidden"
                                 id="fictionGenreInterest"
                                 type="radio"
                                 name="genreInterest"
@@ -141,9 +155,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "fiction"}
                             />
-                            <label htmlFor="fictionGenreInterest">Fiction</label>
+                            <label htmlFor="fictionGenreInterest" className="font-semibold cursor-pointer">Fiction</label>
+                            </div>
 
+                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
+                                className="hidden"
                                 id="nonFictionGenreInterest"
                                 type="radio"
                                 name="genreInterest"
@@ -151,9 +168,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "nonfiction"}
                             />
-                            <label htmlFor="fictionGenreInterest">Non-fiction</label>
+                            <label htmlFor="fictionGenreInterest" className="font-semibold cursor-pointer">Non-fiction</label>
+                            </div>
                             
+                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
                             <input
+                                className="hidden"
                                 id="everyGenreinterest"
                                 type="radio"
                                 name="genreInterest"
@@ -161,13 +181,14 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "every genre"}
                             />
-                            <label htmlFor="everyGenreinterest">Every Genre</label>
+                            <label htmlFor="everyGenreinterest" className="font-semibold cursor-pointer">Every Genre</label>
+                            </div>
 
                         </div>
 
                         <label htmlFor="favBooks" className="mt-5 font-bold">Favorite Books</label>
                         <input
-                            className="rounded-md mt-1 p-3 border-solid border-2 border-gray w-full"
+                            className="rounded-md mt-1 p-3 border-solid border-2 border-gray w-fit min-[420px]:w-full"
                             id="favBooks"
                             type="text"
                             name="favBooks"
@@ -179,7 +200,7 @@ const OnBoarding = () => {
 
                     </section>
 
-                    <section className="flex flex-col gap-10 basis-1/2 justify-between items-start">
+                    <section className="flex flex-col gap-7 basis-1/2 mx-7 mt-10 h-96">
                         <label htmlFor="snippets" className=" font-bold">Writing Snippets</label>
                         <textarea
                         className="rounded-md p-12 border-solid border-2 border-gray w-full h-full"
