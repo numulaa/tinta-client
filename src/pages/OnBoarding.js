@@ -8,7 +8,7 @@ const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [formData, setFormData] = useState({
         userId: cookies.UserId,
-        firstName: "",
+        userName: "",
         dob: "",
         showGenre: false,
         genre: "fiction",
@@ -59,13 +59,13 @@ const OnBoarding = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col">
                     <div className="flex gap-7 lg:flex-row min-[280px]:flex-col">
                     <section className="flex flex-col p-7 mt-3 basis-1/2 items-center sm:items-start text-center sm:text-left">
-                        <label htmlFor="firstName" className="font-bold">First Name</label>
+                        <label htmlFor="userName" className="font-bold">Name</label>
                         <input 
                             className="rounded-md p-3 mt-2 border-solid border-2 border-gray w-fit sm:w-full"
                             type="text"
-                            id="firstName"
-                            name="firstName"
-                            placeholder="First Name"
+                            id="userName"
+                            name="userName"
+                            placeholder="Zee"
                             required={true}
                             value={""}
                             onChange={handleChange}
