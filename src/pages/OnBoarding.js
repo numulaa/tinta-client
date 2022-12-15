@@ -1,37 +1,21 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useCookies } from "react-cookie"
 import Navbar from "../components/Navbar"
-import axios from "axios"
 
 const OnBoarding = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(null)
     const [formData, setFormData] = useState({
-        userId: cookies.UserId,
+        userId: "",
         userName: "",
         dob: "",
         showGenre: false,
         genre: "fiction",
         genreInterest: "fiction",
-        snippets: "",
         favBooks: "",
+        snippets: "",
         matches: []
-
     })
-
-    let navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         console.log('submitted')
-        e.preventDefault()
-        try {
-            const response = await axios.put('http://localhost:8000/user', {formData})
-            console.log(response)
-            const success = response.status === 200
-            if (success) navigate('/dashboard')
-        } catch (err) {
-            console.log(err)
-        }
 
     }
 
@@ -39,12 +23,16 @@ const OnBoarding = () => {
         console.log('e', e)
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
         const name = e.target.name
+        console.log('value' + value, 'name' + name);
 
         setFormData((prevState) => ({
             ...prevState,
-            [name]: value
+            [name] : value
         }))
     }
+
+    console.log(formData);
+
     return (
         <div className="bg-brightOrange">
             <Navbar 
@@ -67,7 +55,7 @@ const OnBoarding = () => {
                             name="userName"
                             placeholder="Zee"
                             required={true}
-                            value={""}
+                            value={formData.userName}
                             onChange={handleChange}
                         />
 
@@ -79,18 +67,18 @@ const OnBoarding = () => {
                                 id="dob"
                                 name="dob"
                                 required={true}
-                                value={""}
+                                value={formData.dob}
                                 onChange={handleChange}
                             />
                         </div>
 
                         <div className="mb-2">
-                        <label for="genre" className="block font-bold mb-2 mt-5">Genre</label>
+                        <label htmlFor="genre" className="block font-bold mb-2 mt-5">Genre</label>
                         
                         <div className="flex gap-2">
-                            <div className="radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="fictionGenre"
                                 type="radio"
                                 name="genre"
@@ -98,12 +86,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "fiction"}
                             />
-                            <label htmlFor="fictionGenre" className="font-semibold cursor-pointer">Fiction</label>
+                            <label htmlFor="fictionGenre" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">Fiction</label>
                             </div>
 
-                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="nonFictionGenre"
                                 type="radio"
                                 name="genre"
@@ -111,12 +99,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "nonfiction"}
                             />
-                            <label htmlFor="nonFictionGenre" className="font-semibold cursor-pointer">Non-fiction</label>
+                            <label htmlFor="nonFictionGenre" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">Non-fiction</label>
                             </div>
 
-                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="moreGenre"
                                 type="radio"
                                 name="genre"
@@ -124,7 +112,7 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genre === "more"}
                             />
-                            <label htmlFor="moreGenre" className="font-semibold cursor-pointer">More</label>
+                            <label htmlFor="moreGenre" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">More</label>
                             </div>
 
                         </div>
@@ -145,9 +133,9 @@ const OnBoarding = () => {
 
                         <label className="mt-7 font-bold">Show Me</label>
                         <div className="flex gap-2">
-                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="fictionGenreInterest"
                                 type="radio"
                                 name="genreInterest"
@@ -155,12 +143,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "fiction"}
                             />
-                            <label htmlFor="fictionGenreInterest" className="font-semibold cursor-pointer">Fiction</label>
+                            <label htmlFor="fictionGenreInterest" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">Fiction</label>
                             </div>
 
-                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="nonFictionGenreInterest"
                                 type="radio"
                                 name="genreInterest"
@@ -168,12 +156,12 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "nonfiction"}
                             />
-                            <label htmlFor="fictionGenreInterest" className="font-semibold cursor-pointer">Non-fiction</label>
+                            <label htmlFor="nonFictionGenreInterest" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">Non-fiction</label>
                             </div>
                             
-                            <div className="inline-block radio border hover:bg-brightOrange hover:text-white rounded-md p-3 border-solid border-2 border-gray cursor-pointer w-fit flex items-center justify-center">
+                            <div>
                             <input
-                                className="hidden"
+                                className="hidden peer"
                                 id="everyGenreinterest"
                                 type="radio"
                                 name="genreInterest"
@@ -181,7 +169,7 @@ const OnBoarding = () => {
                                 onChange={handleChange}
                                 checked={formData.genreInterest === "every genre"}
                             />
-                            <label htmlFor="everyGenreinterest" className="font-semibold cursor-pointer">Every Genre</label>
+                            <label htmlFor="everyGenreinterest" className="border rounded-md p-3 border-solid border-2 border-gray w-fit flex items-center justify-center font-semibold cursor-pointer peer-checked:bg-brightOrange peer-checked:text-white w-full">Every Genre</label>
                             </div>
 
                         </div>
@@ -194,7 +182,7 @@ const OnBoarding = () => {
                             name="favBooks"
                             required={true}
                             placeholder="Babel, The Song of Achilles"
-                            value={""}
+                            value={formData.favBooks}
                             onChange={handleChange}
                         />
 
@@ -208,6 +196,7 @@ const OnBoarding = () => {
                         id="snippets"
                         required={true}
                         placeholder="Language was always..."
+                        value={formData.snippets}
                         onChange={handleChange}
                         />
                         <div></div>
