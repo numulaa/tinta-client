@@ -9,14 +9,21 @@ import "../App.css";
 
 export default function Home() {
   const authToken = false;
+
   const [isSignUp, setIsSignUp] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  
   function handleClick() {
     setShowModal((prevShowModal) => (prevShowModal = true));
   }
   return (
     <div className="overlay">
-      <Navbar />
+      <Navbar 
+        minimal={false}
+        setShowModal={setShowModal}
+        showModal={showModal}
+        setIsSignUp={setIsSignUp}
+      />
       <main className="text-center flex flex-col align-center mt-[30vh] gap-8 justify-center">
         <h1 className="text-7xl">Swipe Right®</h1>
         <button

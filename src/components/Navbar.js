@@ -2,7 +2,15 @@ import React from "react";
 import "../styles/css/main.css";
 import "../App.css";
 
-export default function Navbar() {
+
+export default function Navbar({ minimal, setShowModal, showModal, setIsSignUp }) {
+  const handleClick = () => {
+    setShowModal(true);
+    setIsSignUp(false);
+  };
+
+  const authToken = false;
+
   return (
     <header className="h-20">
       <nav className="flex justify-between px-12 py-4 align-center">
@@ -13,9 +21,16 @@ export default function Navbar() {
             className="max-w-100% h-12"
           />
         </div>
-        <button className="bg-white text-brightOrange text-md font-semibold rounded-md py-2.5 px-5">
-          Login
+         {!authToken && !minimal && (
+         <button 
+          className="bg-white text-brightOrange text-md font-semibold rounded-md py-2.5 px-5"
+          onClick={handleClick}
+          disabled={showModal}
+         >
+          Sign In
         </button>
+        )}
+        
       </nav>
     </header>
   );
